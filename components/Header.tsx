@@ -6,17 +6,17 @@ const Header = () => {
         return(
             <header>
                 <div className='leftH'>
-                    <img src='/Logo' className='logo'/>
+                    <img src='/moralis-logo.svg' className='logo'/>
                     <Link className='link' href='/'>
-                        <div className='headerItem'>Swap</div>
+                    <div className='headerItem'>Swap</div>
                     </Link>
                     <Link href='/tokens'>
-                    <div className='headerItem'></div>
+                    <div className='headerItem'>Tokens</div>
                     </Link>
                 </div>
                 <div className='rightH'>
                     <div className='headerItem'>
-                        <img src='/Eth' alt='eth' className='eth'/>
+                        <img src='/eth.svg' alt='eth' className='eth'/>
                         Ethereum
                     </div>
                     <div>
