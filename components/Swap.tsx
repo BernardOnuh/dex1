@@ -18,11 +18,11 @@ const Swap = () =>{
         <>
          <div> Slippage Tolerance</div>
              <div>
-                <Radio.Goup value={slippage} onChange = {handleSlippageChange}>
+                <Radio.Group value={slippage} onChange = {handleSlippageChange}>
                     <Radio.Button value={0.5}>0.5%</Radio.Button>
                     <Radio.Button value={2.5}>2.5%</Radio.Button>
                     <Radio.Button value={5}>5.0%</Radio.Button>
-                </Radio.Goup>
+                </Radio.Group>
             </div> 
         </>
     );
