@@ -9,11 +9,24 @@ const Swap = () =>{
     const [isOpen, setIsOpen]= useState(false);
     const [tokenOneAmount, setTokenOneAmount] = useState(null);
     const [tokenTwoAmount, setTokenTwoAmount] = useState(null);
+    const [tokenOne, setTokenOne] = useState(tokenList[0]);
+    const [tokenTwo, setTokenTwo] = useState(tokenList[1]);
+    const [prices, setPrices] = useState(null);
+
+
 
     function handleSlippageChange(e) {
         setSlippage(e.target.value);
     }
 
+    function changeAmount(e){
+        setTokenOneAmount(e.target.value);
+        if(e.target.value && prices){
+            setTokenTwoAmount((e.target.value * prices.ratio).toFixed(2))
+        }else{
+            setTokenTwoAmount(null);
+        }
+    }
     const settings = (
         <>
          <div> Slippage Tolerance</div>
