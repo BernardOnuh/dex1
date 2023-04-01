@@ -8,8 +8,8 @@ const Swap: React.FC<InputProps> = ({ value, onChange }) => {
     const address = useAddress()
     const [slippage, setSlippage] = useState(2.5);
     const [isOpen, setIsOpen]= useState(false);
-    const [tokenOneAmount, setTokenOneAmount] = useState(null);
-    const [tokenTwoAmount, setTokenTwoAmount] = useState(null);
+    const [tokenOneAmount, setTokenOneAmount] = useState();
+    const [tokenTwoAmount, setTokenTwoAmount] = useState();
     const [tokenOne, setTokenOne] = useState(tokenList[0]);
     const [tokenTwo, setTokenTwo] = useState(tokenList[1]);
     const [changeToken, setChangeToken] = useState(1);
@@ -116,7 +116,7 @@ const Swap: React.FC<InputProps> = ({ value, onChange }) => {
                 <Input
                  placeholder ='0'
                  type='number'
-                 value={tokenOneAmount}
+                 value= {tokenOneAmount}
                  onChange= {changeAmount}
                  disabled= {!prices}
                  />
