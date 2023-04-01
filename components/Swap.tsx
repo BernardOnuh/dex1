@@ -4,8 +4,7 @@ import { ArrowDownOutlined, DownOutlined, SettingOutlined} from '@ant-design/ico
 import tokenList from './tokenList.json';
 import { useAddress } from '@thirdweb-dev/react';
 
-
-const Swap = () =>{
+const Swap: React.FC<InputProps> = ({ value, onChange }) => {
     const address = useAddress()
     const [slippage, setSlippage] = useState(2.5);
     const [isOpen, setIsOpen]= useState(false);
@@ -13,6 +12,7 @@ const Swap = () =>{
     const [tokenTwoAmount, setTokenTwoAmount] = useState(null);
     const [tokenOne, setTokenOne] = useState(tokenList[0]);
     const [tokenTwo, setTokenTwo] = useState(tokenList[1]);
+    const [changeToken, setChangeToken] = useState(1);
     const [prices, setPrices] = useState(null);
     const [txDetails, setTxDetails] = useState({
         to:null,
@@ -21,11 +21,11 @@ const Swap = () =>{
     })
 
 
-    function handleSlippageChange(e) {
+    function handleSlippageChange(e:any) {
         setSlippage(e.target.value);
     }
 
-    function changeAmount(e){
+    function changeAmount(e:any){
         setTokenOneAmount(e.target.value);
         if(e.target.value && prices){
             setTokenTwoAmount((e.target.value * prices.ratio).toFixed(2))
@@ -45,12 +45,12 @@ const Swap = () =>{
         fetchPrices(two.address, one.address);
     }
 
-    function openModal(asset) {
+    function openModal(asset:any) {
         setChangeToken(asset);
         setIsOpen(true);
     }
 
-    function modifyToken(i){
+    function modifyToken(i:any){
         setPrices(null);
         setTokenOneAmount(null);
         setTokenTwoAmount(null);
@@ -115,6 +115,7 @@ const Swap = () =>{
             <div className='inputs'>
                 <Input
                  placeholder ='0'
+                 type='number'
                  value={tokenOneAmount}
                  onChange= {changeAmount}
                  disabled= {!prices}
@@ -133,7 +134,7 @@ const Swap = () =>{
                     {tokenTwo.ticker}
                     <DownOutlined />
                  </div>
-                 <div className='swapButton' disabled={!tokenOneAmount || !isConnected} onClick={fetchDexSwap}>Swap</div>
+                 <div className='swapButton' disabled={!tokenOneAmount } onClick={fetchDexSwap}>Swap</div>
             </div>
           </div>     
         </>
