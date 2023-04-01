@@ -8,8 +8,8 @@ const Swap = () =>{
     const address = useAddress()
     const [slippage, setSlippage] = useState(2.5);
     const [isOpen, setIsOpen]= useState(false);
-    const [tokenOneAmount, setTokenOneAmount] = useState();
-    const [tokenTwoAmount, setTokenTwoAmount] = useState();
+    const [tokenOneAmount, setTokenOneAmount] = useState('');
+    const [tokenTwoAmount, setTokenTwoAmount] = useState('');
     const [tokenOne, setTokenOne] = useState(tokenList[0]);
     const [tokenTwo, setTokenTwo] = useState(tokenList[1]);
     const [changeToken, setChangeToken] = useState(1);
@@ -28,16 +28,16 @@ const Swap = () =>{
     function changeAmount(e:any){
         setTokenOneAmount(e.target.value);
         if(e.target.value && prices){
-            setTokenTwoAmount((e.target.value * prices.ratio).toFixed(2))
+            setTokenTwoAmount((e.target.value ).toFixed(2))
         }else{
-            setTokenTwoAmount(null);
+            setTokenTwoAmount('');
         }
     }
 
     function switchTokens() {
         setPrices(null);
-        setTokenOneAmount(null);
-        setTokenTwoAmount(null);
+        setTokenOneAmount('');
+        setTokenTwoAmount('');
         const one = tokenOne;
         const two = tokenTwo;
         setTokenOne(two);
@@ -52,8 +52,8 @@ const Swap = () =>{
 
     function modifyToken(i:any){
         setPrices(null);
-        setTokenOneAmount(null);
-        setTokenTwoAmount(null);
+        setTokenOneAmount('');
+        setTokenTwoAmount('');
         if (changeToken ===1 ) {
             setTokenOne(tokenList[i]);
             fetchPrices(tokenList[i])
@@ -125,16 +125,17 @@ const Swap = () =>{
                     <ArrowDownOutlined className='swithArrow'/>
                  </div>
                  <div className='assetOne' onClick={() => openModal(1)}>
-                    <img src={tokenOneAmount.img} alt='assetOneLogo' className='assetLogo'/>
+                    <img src={tokenOne.img} alt='assetOneLogo' className='assetLogo'/>
                     {tokenOne.ticker}
                   <DownOutlined/>
                  </div>
                  <div className='assetTwo' onClick={() => openModal(2)}>
-                    <img src={tokenTwoAmount.img} alt='assetOneLogo' className='assetLogo'/>
+                    <img src={tokenTwo.img} alt='assetOneLogo' className='assetLogo'/>
                     {tokenTwo.ticker}
                     <DownOutlined />
                  </div>
-                 <div className='swapButton' disabled={!tokenOneAmount } onClick={fetchDexSwap}>Swap</div>
+                 <div className='swapButton'
+                  >Swap</div>
             </div>
           </div>     
         </>
