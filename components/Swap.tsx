@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Input , Popover, Radio, Modal, message } from 'antd';
 import { ArrowDownOutlined, DownOutlined, SettingOutlined} from '@ant-design/icons';
 import tokenList from './tokenList.json';
+import { useAddress } from '@thirdweb-dev/react';
 
 
 const Swap = () =>{
+    const address = useAddress()
     const [slippage, setSlippage] = useState(2.5);
     const [isOpen, setIsOpen]= useState(false);
     const [tokenOneAmount, setTokenOneAmount] = useState(null);
@@ -12,7 +14,11 @@ const Swap = () =>{
     const [tokenOne, setTokenOne] = useState(tokenList[0]);
     const [tokenTwo, setTokenTwo] = useState(tokenList[1]);
     const [prices, setPrices] = useState(null);
-
+    const [txDetails, setTxDetails] = useState({
+        to:null,
+        data: null,
+        value: null,
+    })
 
 
     function handleSlippageChange(e) {
@@ -27,6 +33,34 @@ const Swap = () =>{
             setTokenTwoAmount(null);
         }
     }
+
+    function switchTokens() {
+        setPrices(null);
+        setTokenOneAmount(null);
+        setTokenTwoAmount(null);
+        const one = tokenOne;
+        const two = tokenTwo;
+        setTokenOne(two);
+        setTokenTwo(one);
+        fetchPrices(two.address, one.address);
+    }
+
+    function openModal(asset) {
+        setChangeToken(asset);
+        setIsOpen(true);
+    }
+
+    function modifyToken(i){
+        setPrices(null);
+        setTokenOneAmount(null);
+        setTokenTwoAmount(null);
+        if (changeToken ===1 ) {
+            setTokenOne(tokenList[i]);
+            fetchPrices(tokenList[i])
+        }
+    }
+
+
     const settings = (
         <>
          <div> Slippage Tolerance</div>
