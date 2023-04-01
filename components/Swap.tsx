@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Input , Popover, Radio, Modal, message } from 'antd';
 import { ArrowDownOutlined, DownOutlined, SettingOutlined} from '@ant-design/icons';
 import tokenList from './tokenList.json';
+import axios from 'axios'
 import { useAddress } from '@thirdweb-dev/react';
 
 const Swap = () =>{
@@ -56,8 +57,18 @@ const Swap = () =>{
         setTokenTwoAmount('');
         if (changeToken ===1 ) {
             setTokenOne(tokenList[i]);
-            fetchPrices(tokenList[i])
+            fetchPrices(tokenList[i].address, tokenTwo.address)
+        } else {
+            setTokenTwo(tokenList[i]);
+            fetchPrices(tokenOne.address, tokenList[i].address)
         }
+        setIsOpen(false);
+    }
+
+    async function fetchPrices(one:any, two:any){
+        const res = await axios.get(`/api/server`, {
+            params: {addressOne: one, addressTwo: two}
+        })
     }
 
 
@@ -115,7 +126,6 @@ const Swap = () =>{
             <div className='inputs'>
                 <Input
                  placeholder ='0'
-                 type='number'
                  value= {tokenOneAmount}
                  onChange= {changeAmount}
                  disabled= {!prices}
@@ -135,6 +145,7 @@ const Swap = () =>{
                     <DownOutlined />
                  </div>
                  <div className='swapButton'
+                      disabled={!tokenOneAmount}
                   >Swap</div>
             </div>
           </div>     
