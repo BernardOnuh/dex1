@@ -4,7 +4,7 @@ import { ArrowDownOutlined, DownOutlined, SettingOutlined} from '@ant-design/ico
 import tokenList from './tokenList.json';
 import { useAddress } from '@thirdweb-dev/react';
 
-const Swap: React.FC<InputProps> = ({ value, onChange }) => {
+const Swap = () =>{
     const address = useAddress()
     const [slippage, setSlippage] = useState(2.5);
     const [isOpen, setIsOpen]= useState(false);
