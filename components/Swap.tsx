@@ -69,6 +69,8 @@ const Swap = () =>{
         const res = await axios.get(`/api/index`, {
             params: {addressOne: one, addressTwo: two}
         })
+        
+        setPrices(res.data)
     }
 
 
