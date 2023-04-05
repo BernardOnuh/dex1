@@ -1,34 +1,24 @@
-const Moralis = require('moralis').default;
-const cors = require('cors');
-require('dotenv').config();
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import Moralis from 'moralis';
+import *as dotenv from 'dotenv';
+import { EvmChain } from '@moralisweb3/common-evm-utils';
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-
-
-export default async function tokenPrice(
+export default async function runApp(
   req: NextApiRequest,
-  res: NextApiResponse,
-) {
-  const {query}= req;
+  res: NextApiResponse
+){
+  const address = "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599";
 
-  const responseOne = await Moralis.EvmApi.token.getTokenPrice({
-    address: query.addressOne
-  })
+  const chain = EvmChain.ETHEREUM;
 
-  const responseTwo = await Moralis.EvmApi.token.getTokenPrice({
-    address: query.addressTwo
-  })
+  const response = await Moralis.EvmApi.token.getTokenPrice({
+    address,
+    chain,
+  });
 
-  const  usdPrices = {
-    tokenOne: responseOne.raw.usdPrice,
-    tokenTwo: responseTwo.raw.usdPrice,
-    ratio: responseOne.raw.usdPrice/responseTwo.raw.usdPrice
-  }
-  
-  return res.status(200).json(usdPrices);
+  console.log(response.toJSON());
+
+  Moralis.start({
+    apiKey: process.env.MORALIS_KEY,
+  });
 };
-
-Moralis.start({
-  apiKey: process.env.Moralis_KEY,
-})

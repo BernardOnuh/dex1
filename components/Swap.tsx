@@ -73,6 +73,10 @@ const Swap = () =>{
         setPrices(res.data)
     }
 
+    useEffect(()=>{
+
+        fetchPrices(tokenList[0].address, tokenList[1].address)
+    }, [])
 
     const settings = (
         <>
