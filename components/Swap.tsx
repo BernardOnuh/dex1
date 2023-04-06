@@ -66,7 +66,7 @@ const Swap = () =>{
     }
 
     async function fetchPrices(one:any, two:any){
-        const res = await axios.get(`/api/index`, {
+        const res = await axios.get(`/api/server`, {
             params: {addressOne: one, addressTwo: two}
         })
         
