@@ -19,12 +19,12 @@ export default async function runApp(
   const chain = EvmChain.ETHEREUM;
 
   const responseOne = await Moralis.EvmApi.token.getTokenPrice({
-    address: address1,
+    address: address1 as EvmAddressish ,
     chain,
   })
 
   const responseTwo = await Moralis.EvmApi.token.getTokenPrice({
-    address: address2,
+    address: address2 as EvmAddressish,
     chain
   })
 
