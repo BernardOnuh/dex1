@@ -29,7 +29,7 @@ const Swap = () =>{
     function changeAmount(e:any){
         setTokenOneAmount(e.target.value);
         if(e.target.value && prices){
-            setTokenTwoAmount((e.target.value ).toFixed(2))
+            setTokenTwoAmount(Number((e.target.value * prices.ratio)).toFixed(2))
         }else{
             setTokenTwoAmount('');
         }
