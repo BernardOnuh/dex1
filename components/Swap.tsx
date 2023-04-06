@@ -4,23 +4,36 @@ import { ArrowDownOutlined, DownOutlined, SettingOutlined} from '@ant-design/ico
 import tokenList from './tokenList.json';
 import axios from 'axios'
 import { useAddress } from '@thirdweb-dev/react';
+import { useSendTransaction, useWaitForTransaction, useAccount } from "wagmi";
 
 const Swap = () =>{
-    const address = useAddress()
     const [slippage, setSlippage] = useState(2.5);
     const [isOpen, setIsOpen]= useState(false);
+    //const [messageApi, contextHolder] = message.useMessage();
     const [tokenOneAmount, setTokenOneAmount] = useState('');
     const [tokenTwoAmount, setTokenTwoAmount] = useState('');
     const [tokenOne, setTokenOne] = useState(tokenList[0]);
     const [tokenTwo, setTokenTwo] = useState(tokenList[1]);
     const [changeToken, setChangeToken] = useState(1);
     const [prices, setPrices] = useState(null);
-    const [txDetails, setTxDetails] = useState({
+    {/*const [txDetails, setTxDetails] = useState({
         to:null,
         data: null,
         value: null,
     })
 
+    const {data, sendTransaction} = useSendTransaction({
+        request: {
+          from: address,
+          to: String(txDetails.to),
+          data: String(txDetails.data),
+          value: String(txDetails.value),
+        }
+      });
+    
+      const { isLoading, isSuccess } = useWaitForTransaction({
+        hash: data?.hash,
+      })*/}
 
     function handleSlippageChange(e:any) {
         setSlippage(e.target.value);
@@ -80,6 +93,72 @@ const Swap = () =>{
 
         fetchPrices(tokenList[0].address, tokenList[1].address)
     }, [])
+
+    {/*async function fetchDexSwap(){
+
+        const allowance = await axios.get(`https://api.1inch.io/v5.0/1/approve/allowance?tokenAddress=${tokenOne.address}&walletAddress=${address}`)
+      
+        if(allowance.data.allowance === "0"){
+    
+          const approve = await axios.get(`https://api.1inch.io/v5.0/1/approve/transaction?tokenAddress=${tokenOne.address}`)
+    
+          setTxDetails(approve.data);
+          console.log("not approved")
+          return
+    
+        }
+    
+        const tx = await axios.get(
+          `https://api.1inch.io/v5.0/1/swap?fromTokenAddress=${tokenOne.address}&toTokenAddress=${tokenTwo.address}&amount=${tokenOneAmount.padEnd(tokenOne.decimals+tokenOneAmount.length, '0')}&fromAddress=${address}&slippage=${slippage}`
+        )
+    
+        let decimals = Number(`1E${tokenTwo.decimals}`)
+        setTokenTwoAmount((Number(tx.data.toTokenAmount)/decimals).toFixed(2));
+    
+        setTxDetails(tx.data.tx);
+      
+      }
+
+      useEffect(()=>{
+
+        if(txDetails.to && isConnected){
+          sendTransaction();
+        }
+    }, [txDetails])
+  
+    useEffect(()=>{
+  
+      messageApi.destroy();
+  
+      if(isLoading){
+        messageApi.open({
+          type: 'loading',
+          content: 'Transaction is Pending...',
+          duration: 0,
+        })
+      }    
+  
+    },[isLoading])
+  
+    useEffect(()=>{
+      messageApi.destroy();
+      if(isSuccess){
+        messageApi.open({
+          type: 'success',
+          content: 'Transaction Successful',
+          duration: 1.5,
+        })
+      }else if(txDetails.to){
+        messageApi.open({
+          type: 'error',
+          content: 'Transaction Failed',
+          duration: 1.50,
+        })
+      }
+  
+  
+    },[isSuccess])
+*/}
 
     const settings = (
         <>
@@ -153,8 +232,10 @@ const Swap = () =>{
                     {tokenTwo.ticker}
                     <DownOutlined />
                  </div>
-                 <div className='swapButton'
-                  >Swap</div>
+                 <div className='swapButton' 
+                        //onClick={fetchDexSwap}
+                  >
+                    Swap</div>
             </div>
           </div>     
         </>
