@@ -1,9 +1,7 @@
 import Moralis from 'moralis';
-import *as dotenv from 'dotenv';
 import { EvmChain } from '@moralisweb3/common-evm-utils';
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-dotenv.config()
 export default async function runApp(
   req: NextApiRequest,
   res: NextApiResponse
