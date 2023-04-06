@@ -12,17 +12,24 @@ export default async function runApp(
     apiKey: process.env.MORALIS_KEY,
   });
   
-  const address = "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599";
+  const {query} = req;
+
+
 
   const chain = EvmChain.ETHEREUM;
 
-  const response = await Moralis.EvmApi.token.getTokenPrice({
-    address,
+  const responseOne = await Moralis.EvmApi.token.getTokenPrice({
+    address: query.addressOne,
     chain,
-  });
+  })
 
-  return res.status(200).json(response);
+  const responseTwo = await Moralis.EvmApi.token.getTokenPrice({
+    address: query.addressTwo,
+    chain
+  })
 
+  console.log(responseOne.toJSON());
+  console.log(responseTwo.toJSON());
 
-  console.log(response.toJSON());
+  return res.status(200).json({});
 };
