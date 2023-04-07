@@ -3,8 +3,8 @@ import { Input , Popover, Radio, Modal, message } from 'antd';
 import { ArrowDownOutlined, DownOutlined, SettingOutlined} from '@ant-design/icons';
 import tokenList from './tokenList.json';
 import axios from 'axios'
-import { useAddress } from '@thirdweb-dev/react';
-import { useSendTransaction, useWaitForTransaction, useAccount } from "wagmi";
+//import { useAddress } from '@thirdweb-dev/react';
+//import { useSendTransaction, useWaitForTransaction, useAccount } from "wagmi";
 
 const Swap = () =>{
     const [slippage, setSlippage] = useState(2.5);

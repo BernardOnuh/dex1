@@ -7,12 +7,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
   width: 100vw;
-  background-color: rgb(25, 33, 52) !important;
-  background: rgb(25, 33, 52);
+  background-color: rgb(2, 2, 3) !important;
+  background: rgb(1, 1, 1);
   background: linear-gradient(
     180deg,
-    rgba(25, 33, 52, 1) 28%,
-    rgba(7, 8, 21, 1) 75%
+    rgb(18, 18, 18) 28%,
+    rgb(0, 0, 0) 75%
   );
   color: white;
 }
@@ -23,7 +23,7 @@ code {
 }
 
 .ant-input {
-  background-color: #1f2639 !important;
+  background-color: #141414 !important;
   color: white !important;
   border-width: 0px !important;
   height: 96px !important;
@@ -51,8 +51,8 @@ code {
 .ant-popover-inner {
   min-width: 260px !important;
   min-height: 140px !important;
-  border: 1px solid #21273a;
-  background-color: #0e111b !important;
+  border: 1px solid #0e0e0e;
+  background-color: #030304 !important;
 }
 
 .ant-radio-group {
@@ -60,7 +60,7 @@ code {
 }
 
 .ant-radio-button-wrapper {
-  background-color: #1f2639 !important;
+  background-color: #030304 !important;
   color: white !important;
   font-weight: 500;
   border-color: white !important;
@@ -68,7 +68,7 @@ code {
 
 .ant-radio-button-wrapper-checked {
   border-color: white !important;
-  background-color: #363e54 !important;
+  background-color: #3b3b3b !important;
 }
 
 .ant-radio-button-wrapper-checked::before {
@@ -76,19 +76,19 @@ code {
 }
 
 .ant-modal-content {
-  background-color: #0e111b !important;
+  background-color: #030304 !important;
   color: white !important;
   padding: 0px !important;
 }
 
 .ant-modal {
-  border: 1px solid #363e54;
+  border: 1px solid #030304;
   width: 400px !important;
   border-radius: 10px;
 }
 
 .ant-modal-header {
-  background-color: #0e111b !important;
+  background-color: #030304 !important;
 }
 
 .ant-modal-title {
@@ -173,8 +173,8 @@ code {
 
 .tradeBox {
   width: 400px;
-  background-color: #0E111B;
-  border: 2px solid #21273a;
+  background-color: #030304;
+  border: 2px solid #ffffff;
   min-height: 300px;
   border-radius: 15px;
   display: flex;
@@ -194,7 +194,7 @@ code {
 }
 
 .cog {
-  color: #51586f;
+  color: #ffffff;
   transition: 0.3s;
 }
 
@@ -205,7 +205,7 @@ code {
 }
 
 .switchButton {
-  background-color: #3a4157;
+  background-color: #030304;
   width: 25px;
   height: 25px;
   align-items: center;
@@ -215,8 +215,8 @@ code {
   position: absolute;
   top: 86px;
   left: 180px;
-  color: #5F6783;
-  border: 3px solid #0E111B;
+  color: #ffffff;
+  border: 3px solid #ffffff;
   font-size: 12px;
   transition: 0.3s
 }
@@ -226,7 +226,7 @@ code {
   top: 75px;
   left: 14px;
   font-size: 10px;
-  color: #5F6783;
+  color: #fefefe;
 }
 
 .switchButton:hover {
@@ -242,7 +242,7 @@ code {
   position: absolute;
   min-width: 50px;
   height: 30px;
-  background-color: #3a4157;
+  background-color: #0d0d0d;
   top: 36px;
   right: 20px;
   border-radius: 100px;
@@ -259,7 +259,7 @@ code {
   position: absolute;
   min-width: 50px;
   height: 30px;
-  background-color: #3a4157;
+  background-color: #0d0d0d;
   top: 135px;
   right: 20px;
   border-radius: 100px;
@@ -289,12 +289,12 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #243056; 
+  background-color: #ffffff; 
   width: calc(100%);
   height: 55px;
   font-size: 20px;
   border-radius: 12px;
-  color: #5981F3;
+  color: #030304;
   font-weight: bold;
   transition: 0.3s;
   margin-bottom: 30px;
@@ -302,19 +302,22 @@ code {
 }
 
 .swapButton[disabled] {
-  background-color: #243056;
+  background-color: #030304;
   opacity: 0.4;
-  color: #5982f39b;
+  color: #ffffff9b;
 }
 
 .swapButton[disabled]:hover {
   cursor: not-allowed;
-  background-color: #243056;
+  background-color: #030304;
+  color: white;
+
 }
 
 .swapButton:hover {
   cursor: pointer;
-  background-color: #3b4874
+  background-color: #0d0d0d;
+  color: white;
 }
 
 .tokenLogo {
@@ -342,7 +345,7 @@ code {
 
 .tokenChoice:hover {
   cursor: pointer;
-  background-color: #1f2639;
+  background-color: #0d0d0d;
 }
 
 .tokenName {
@@ -355,6 +358,6 @@ code {
   margin-left: 10px;
   font-size: 13px;
   font-weight: 300;
-  color: #51596f;
+  color: #ffffff;
 }
 

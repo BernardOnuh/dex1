@@ -6,7 +6,7 @@ const Header = () => {
         return(
             <header>
                 <div className='leftH'>
-                    <img src='/moralis-logo.svg' className='logo'/>
+                    <img src='/logo.png' className='logo'/>
                     <Link className='link' href='/'>
                     <div className='headerItem'>Swap</div>
                     </Link>
