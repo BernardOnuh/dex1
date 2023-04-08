@@ -6,6 +6,10 @@ import axios from 'axios'
 //import { useAddress } from '@thirdweb-dev/react';
 //import { useSendTransaction, useWaitForTransaction, useAccount } from "wagmi";
 
+interface prices{
+  ratio:number;
+}
+
 const Swap = () =>{
     const [slippage, setSlippage] = useState(2.5);
     const [isOpen, setIsOpen]= useState(false);
@@ -15,7 +19,7 @@ const Swap = () =>{
     const [tokenOne, setTokenOne] = useState(tokenList[0]);
     const [tokenTwo, setTokenTwo] = useState(tokenList[1]);
     const [changeToken, setChangeToken] = useState(1);
-    const [prices, setPrices] = useState(null);
+    const [prices, setPrices] = useState<prices| null> (null);
     {/*const [txDetails, setTxDetails] = useState({
         to:null,
         data: null,
@@ -41,7 +45,7 @@ const Swap = () =>{
 
     function changeAmount(e:any){
         setTokenOneAmount(e.target.value);
-        if(e.target.value && prices){
+        if(e.target.value && prices?.ratio){
             setTokenTwoAmount(Number((e.target.value * prices.ratio)).toFixed(2))
         }else{
             setTokenTwoAmount('');
